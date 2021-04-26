@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+<meta charset="UTF-8">
+
+<h2 align="center">Температура воздуха: {{ data_list["temp"]}}</h2>
+<h2 align="center">Влажность воздуха: {{ data_list["humidity"]}}</h2>
+<h2 align="center">Темперетура: воды {{ data_list["temp2"]}}</h2>
+<h2 align="center">Кислотность воды: {{ data_list["PH"]}}</h2>
+<h2 align="center">Напряжение датчика: {{ data_list["volt"]}}</h2>
+<h2 align="center">Уровень воды: {{ data_list["water"]}}</h2>
+<h2 align="center">Освещеность: {{ data_list["light"]}}</h2>
+<h2 align="center">Включенл свет: {{ data_list["LIGH"]}}</h2>
+<h2 align="center">Охлождение: {{ data_list["Cooling"]}}</h2>
+
+{% endblock %}
