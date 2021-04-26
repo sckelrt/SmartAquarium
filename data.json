@@ -3,9 +3,9 @@
   "humidity": 80,
   "temp2": 30.4,
   "PH": 7.5,
-  "volt": 1.3,
+  "volt": 3,
   "water": "ON",
-  "light": 111,
+  "light": 323,
   "LIGH": "ON",
   "Cooling": "OFF"
 }

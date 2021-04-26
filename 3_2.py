@@ -8,8 +8,13 @@ aquariumParametres = {'temp': (27, 30), 'humidity': (90, 99), 'temp2': (24, 26),
                       'light': (100, 200)}
 
 
+@app.route('/')
+def index():
+    return redirect('/data')
+
+
 @app.route('/data')
-def member():
+def data():
     RGBparamemtres = list()
     with open("templates/data.json", "rt", encoding="utf8") as f:
         data_list = json.loads(f.read())
@@ -21,12 +26,12 @@ def member():
                     RGBparamemtres.append("alert-danger")
             except:
                 print('false')
-    return render_template('member.html', data_list=data_list, RGBparamemtres=RGBparamemtres)
+    return render_template('data.html', data_list=data_list, RGBparamemtres=RGBparamemtres)
 
 
-@app.route('/')
-def index():
-    return redirect('/data')
+@app.route('/news')
+def news():
+    return render_template('news.html')
 
 
 if __name__ == '__main__':
