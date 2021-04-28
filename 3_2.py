@@ -2,7 +2,7 @@ import json
 from data import db_session
 from flask import Flask, render_template, redirect
 from data.SavingData import SavingData
-import schedule
+from apscheduler.schedulers.background import BackgroundScheduler
 
 SavingDataManager = SavingData()
 app = Flask(__name__)
@@ -28,7 +28,7 @@ def dataSave():
     SavingDataManager.light = DataContanier[6]
     SavingDataManager.LIGH = DataContanier[7]
     SavingDataManager.Cooling = DataContanier[8]
-    SavingDataManager.aquarium_id = DataContanier[9]
+    SavingDataManager.aquarium_id = aquariumID
     db_sess = db_session.create_session()
     db_sess.add(SavingDataManager)
     db_sess.commit()
@@ -66,8 +66,10 @@ def news():
     return render_template('news.html')
 
 
+sched = BackgroundScheduler(daemon=True)
+sched.add_job(dataSave, 'interval', seconds=5)
+sched.start()
+
 if __name__ == '__main__':
     db_session.global_init("db/AquariumData.db")
-    schedule.run_pending()
-    schedule.every(5).seconds.do(dataSave)
     app.run(port=8081, host='127.0.0.1')
