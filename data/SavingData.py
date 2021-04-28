@@ -8,7 +8,7 @@ class SavingData(SqlAlchemyBase):
     __tablename__ = 'SavingData'
 
     id = sqlalchemy.Column(sqlalchemy.Integer,
-                           primary_key=True, autoincrement=True)
+                           primary_key=True)  # autoincrement=True)
     temp_air = sqlalchemy.Column(sqlalchemy.Integer, nullable=True)
     humidity = sqlalchemy.Column(sqlalchemy.Integer, nullable=True)
     temp_water = sqlalchemy.Column(sqlalchemy.Integer, nullable=True)
