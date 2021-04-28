@@ -1,5 +1,6 @@
 import datetime
 import sqlalchemy
+from sqlalchemy import orm
 from .db_session import SqlAlchemyBase
 
 
@@ -19,3 +20,6 @@ class SavingData(SqlAlchemyBase):
     Cooling = sqlalchemy.Column(sqlalchemy.Integer, nullable=True)
     created_date = sqlalchemy.Column(sqlalchemy.DateTime,
                                      default=datetime.datetime.now)
+    aquarium_id = sqlalchemy.Column(sqlalchemy.Integer)  # sqlalchemy.ForeignKey("Aquariums.id"))
+
+    # Aquariums = orm.relation('Aquriums')
